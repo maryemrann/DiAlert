@@ -1,0 +1,22 @@
+{
+  "gender": "male",
+  "age": 29,
+  "hypertension": 1,
+  "heart_disease": 0,
+  "smoking_status": "smokes",
+  "bmi": 28,
+  "hba1c": 2.5,
+  "glucose": 290,
+  "probability": "0.08",
+  "risk_level": "Low risk of Diabetes",
+  "recommendations": [
+    "Low diabetes risk. Keep up the good habits!",
+    "Continue eating a balanced diet with plenty of fruits and vegetables.",
+    "Stay active and maintain regular health screenings.",
+    "Avoid smoking and excessive consumption of sugary drinks.",
+    "Hypertension detected: Reduce salt intake, manage stress, and monitor BP regularly.",
+    "High BMI: Consider healthy weight loss through diet and exercise.",
+    "Elevated blood glucose: Reduce sugar intake and monitor glucose regularly.",
+    "HbA1c is in normal range: Maintain current healthy habits."
+  ]
+}

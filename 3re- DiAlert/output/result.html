@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiAlert - Diabetes Risk Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0f1c;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #002b36;
+            padding: 15px 0;
+            box-shadow: 0 2px 6px rgba(0, 255, 255, 0.3);
+        }
+
+        .logo-title-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container {
+            width: 80px;
+            height: 80px;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px #00ffff88);
+        }
+
+        .app-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 5px cyan, 0 0 8px cyan;
+        }
+
+        .app-title span {
+            color: cyan;
+        }
+
+        .desc-bar {
+            background: #003844;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: inset 0 -3px 10px rgba(0, 255, 255, 0.15);
+            color: white;
+            text-shadow: 0 0 8px cyan;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+
+        .info {
+            background: linear-gradient(135deg, #04202a, #005f73);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 0 25px #00ffffcc;
+            min-width: 350px;
+            max-width: 420px;
+            color: white;
+            font-weight: 600;
+            box-sizing: border-box;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .info:hover {
+            box-shadow: 0 0 35px 8px cyan;
+            cursor: default;
+        }
+
+        .info h1 {
+            font-size: 32px;
+            color: white;
+            text-shadow: 0 0 10px cyan;
+            margin-bottom: 30px;
+            user-select: none;
+        }
+
+        .info-box {
+            background: #003844cc;
+            border-radius: 15px;
+            padding: 12px 18px;
+            margin-bottom: 14px;
+            box-shadow: 0 0 15px #00ffffaa;
+            transition: box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            user-select: none;
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 0 8px cyan;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .info-box:hover {
+            box-shadow: 0 0 25px 4px cyan;
+            cursor: default;
+        }
+
+        .info-box strong,
+        .info-box span {
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 0 8px cyan;
+        }
+
+        .result {
+            background: #002b36;
+            border-radius: 20px;
+            padding: 25px 80px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            min-width: 520px;
+            max-width: 580px;
+            color: white;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.3s ease;
+            min-height: 460px;
+            font-weight: 700;
+            text-shadow: 0 0 8px cyan;
+        }
+
+        .result:hover {
+            box-shadow: 0 0 35px 8px cyan;
+            cursor: default;
+        }
+
+        .result h2 {
+            font-size: 30px;
+            color: white;
+            text-shadow: 0 0 10px cyan;
+            margin-bottom: 30px;
+            text-align: center;
+            user-select: none;
+            font-weight: 700;
+        }
+
+        .circle {
+            border: 6px solid cyan;
+            border-radius: 50%;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 30px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            user-select: none;
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 0 8px cyan;
+        }
+
+        .percentage {
+            font-size: 48px;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .risk-level {
+            font-size: 20px;
+            margin-top: 12px;
+            color: white;
+            text-shadow: 0 0 8px cyan;
+            user-select: none;
+            font-weight: 700;
+        }
+
+        .recommendations {
+            margin-top: 15px;
+            color: white;
+            max-width: 90%;
+            font-weight: 700;
+            text-shadow: 0 0 8px cyan;
+        }
+
+        .recommendations h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 0 0 10px cyan;
+            text-align: center;
+            user-select: none;
+            font-weight: 700;
+        }
+
+        .recommendations ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="logo-title-group">
+            <div class="logo-container">
+                <img src="3re_Logo-removebg-preview.png" alt="DiAlert Logo" class="logo-img">
+            </div>
+            <h1 class="app-title">Di<span>Alert</span></h1>
+        </div>
+    </div>
+
+    <div class="desc-bar">
+        DiAlert Predictor is an advanced tool that uses modern technology to predict the risk of diabetes.
+    </div>
+
+    <div class="container">
+        <div class="info">
+            <h1>Patient Information</h1>
+            <div class="info-box"><strong>⚧ Gender:</strong> <span id="gender">{{ gender }}</span></div>
+            <div class="info-box"><strong>📅 Age:</strong> <span id="age">{{ age }}</span></div>
+            <div class="info-box"><strong>🩺 Hypertension:</strong> <span id="hypertension">{{ hypertension }}</span></div>
+            <div class="info-box"><strong>❤ Heart Disease:</strong> <span id="heartDisease">{{ heart_disease }}</span></div>
+            <div class="info-box"><strong>🚬 Smoking Status:</strong> <span id="smokingStatus">{{ smoking_status }}</span></div>
+            <div class="info-box"><strong>🧍 BMI:</strong> <span id="bmi">{{ bmi }}</span></div>
+            <div class="info-box"><strong>🩸 HbA1c:</strong> <span id="hba1c">{{ hba1c }}</span> %</div>
+            <div class="info-box"><strong>💧 Blood Glucose Level:</strong> <span id="glucose">{{ glucose }}</span> mg/dL</div>
+        </div>
+
+        <div class="result">
+            <h2>Prediction</h2>
+            <div class="circle">
+                <div class="percentage" id="predictionPercent">--%</div>
+            </div>
+            <div class="risk-level" id="riskLevel">--</div>
+            <div class="recommendations">
+                <h3>Recommendations</h3>
+                <ul id="recommendations-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        fetch('result.txt')
+            .then(response => response.json())
+            .then(data => {
+                // Patient Information
+                document.getElementById('gender').textContent = data.gender;
+                document.getElementById('age').textContent = data.age;
+                document.getElementById('hypertension').textContent = data.hypertension === 1 ? 'Yes' : 'No';
+                document.getElementById('heartDisease').textContent = data.heart_disease === 1 ? 'Yes' : 'No';
+                document.getElementById('smokingStatus').textContent = data.smoking_status.replace('_', ' ');
+                document.getElementById('bmi').textContent = data.bmi;
+                document.getElementById('hba1c').textContent = data.hba1c;
+                document.getElementById('glucose').textContent = data.glucose;
+
+                // Risk Prediction
+                document.getElementById('predictionPercent').textContent = data.probability + '%';
+                document.getElementById('riskLevel').textContent = data.risk_level;
+
+                // Recommendations
+                const recList = document.getElementById('recommendations-list');
+                data.recommendations.forEach(rec => {
+                    const li = document.createElement('li');
+                    li.textContent = rec;
+                    recList.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading results:', error);
+                document.body.innerHTML = '<h1>Error loading results. Please try again.</h1>';
+            });
+    </script>
+</body>
+</html>
